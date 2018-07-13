@@ -44,7 +44,7 @@ public class TimelineFragment extends Fragment {
     // This event is triggered soon after onCreateView().
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(final View view, Bundle savedInstanceState) {
         swipeLayout = view.findViewById(R.id.swipe_container);
         // Setup any handles to view objects here
         rvTimeline = view.findViewById(R.id.rvTimeline);
@@ -57,6 +57,7 @@ public class TimelineFragment extends Fragment {
             @Override
             public void onRefresh() {
                 // Your code here
+                refresh();
                 Toast.makeText(getContext(), "Works!", Toast.LENGTH_LONG).show();
                 // To keep animation for 4 seconds
                 swipeLayout.postDelayed(new Runnable() {
@@ -79,7 +80,7 @@ public class TimelineFragment extends Fragment {
 
     }
 
-    public void onRefresh(View view) {
+    public void refresh() {
         loadTopPosts();
     }
 
