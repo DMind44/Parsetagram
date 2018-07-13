@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.dmindlin.parsetagram.model.Post;
 import com.parse.FindCallback;
@@ -25,17 +27,25 @@ public class TimelineFragment extends Fragment {
     RecyclerView rvTimeline;
     ArrayList<Post> fposts;
     Activity activity;
+    SwipeRefreshLayout swipeLayout;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         return inflater.inflate(R.layout.timeline, parent, false);
+
+
+
     }
+
+
 
     // This event is triggered soon after onCreateView().
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        swipeLayout = view.findViewById(R.id.swipe_container);
         // Setup any handles to view objects here
         rvTimeline = view.findViewById(R.id.rvTimeline);
         fposts = new ArrayList<>();
@@ -43,6 +53,29 @@ public class TimelineFragment extends Fragment {
 //        rvTimeline.setLayoutManager(new LinearLayoutManager(this));
         rvTimeline.setAdapter(postAdapter);
         rvTimeline.setLayoutManager(new LinearLayoutManager(getActivity()));
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code here
+                Toast.makeText(getContext(), "Works!", Toast.LENGTH_LONG).show();
+                // To keep animation for 4 seconds
+                swipeLayout.postDelayed(new Runnable() {
+                    @Override public void run() {
+                        // Stop animation (This will be after 3 seconds)
+                        swipeLayout.setRefreshing(false);
+                    }
+                }, 4000); // Delay in millis
+            }
+        });
+        // Scheme colors for animation
+        swipeLayout.setColorSchemeColors(
+                getResources().getColor(android.R.color.holo_blue_bright),
+                getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_orange_light),
+                getResources().getColor(android.R.color.holo_red_light)
+        );
+
+
 
     }
 
