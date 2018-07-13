@@ -2,16 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/miTimeline"
-        android:title="Timeline"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/logout"
         android:icon="@drawable/ic_launcher_background"
         android:onClick="logout"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/miCompose"
-        android:title="Compose"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:title="" />
 </menu>

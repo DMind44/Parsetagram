@@ -22,13 +22,4 @@
         android:onClick="onPost"
         android:text="Post" />
 
-    <Button
-        android:id="@+id/btnRefresh"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnPost"
-        android:layout_centerHorizontal="true"
-        android:onClick="onRefresh"
-        android:layout_marginTop="-99dp"
-        android:text="Refresh" />
 </RelativeLayout>
