@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             loginBtn = findViewById(R.id.btnLogin);
         }
     }
-
     public void login (View view) {
         String username = usernameInput.getText().toString();
         String password = passwordInput.getText().toString();

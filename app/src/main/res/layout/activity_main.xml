@@ -6,26 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/etusernameInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/etPasswordInput"
-        android:layout_centerHorizontal="true"
-        android:hint="Username"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="169dp" />
-
-    <EditText
-        android:id="@+id/etPasswordInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnLogin"
-        android:layout_centerHorizontal="true"
-        android:hint="Password"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="188dp" />
-
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
@@ -44,4 +24,25 @@
         android:layout_centerHorizontal="true"
         android:onClick="signUp"
         android:text="sign up" />
+
+    <EditText
+        android:id="@+id/etusernameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etPasswordInput"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Enter Username"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etPasswordInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnLogin"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Enter Username"
+        android:inputType="textPassword" />
+
 </RelativeLayout>

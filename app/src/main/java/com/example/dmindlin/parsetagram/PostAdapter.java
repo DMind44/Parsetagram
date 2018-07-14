@@ -1,6 +1,7 @@
 package com.example.dmindlin.parsetagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,10 +15,10 @@ import com.example.dmindlin.parsetagram.model.Post;
 
 import java.util.List;
 
-public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>  {
 
     List<Post> mPosts;
-    public PostAdapter(List<Post> posts) {
+    PostAdapter(List<Post> posts) {
         mPosts = posts;
     }
 
@@ -46,7 +47,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView image;
         public TextView tvUsername;
         public TextView tvDescription;
@@ -59,6 +62,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             image = (ImageView) itemView.findViewById(R.id.imageView);
             tvUsername = (TextView) itemView.findViewById(R.id.tvUsername);
             tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int i = this.getAdapterPosition();
+            Post post = mPosts.get(i);
+            Intent intent = new Intent(view.getContext(), DetailsActivity.class);
+            intent.putExtra("post",post);
+            view.getContext().startActivity(intent);
+
         }
     }
 }
