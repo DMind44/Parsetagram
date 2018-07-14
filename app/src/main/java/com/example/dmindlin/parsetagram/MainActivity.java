@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
             passwordInput = findViewById(R.id.etPasswordInput);
             loginBtn = findViewById(R.id.btnLogin);
         }
-
     }
 
     public void login (View view) {
@@ -55,5 +54,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void signUp (View view) {
+        Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
